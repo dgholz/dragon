@@ -3,5 +3,6 @@
 
 int main( int argc, char* *argv ) {
     Parser a(std::cin);
-    std::cout << a.start();
+    a.expr();
+    std::cout << std::endl;
 }

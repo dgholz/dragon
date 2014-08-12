@@ -3,11 +3,18 @@
 
 #include <istream>
 #include <iterator>
+#include <vector>
+#include <string>
 
 struct Parser {
+    Parser(std::istream_iterator<char>);
+
+    void expr();
+    void term();
+
     std::istream_iterator<char> lookahead;
-    Parser(std::istream_iterator<char> src);
-    char* start();
+    void match(char const&);
+
 private:
     Parser();
 };

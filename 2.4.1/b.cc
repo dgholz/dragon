@@ -2,12 +2,11 @@
 #include <iostream>
 
 void b::S() {
-    std::istream_iterator<char> eos;
-    while(lookahead != eos) {
-        switch(*lookahead) {
-            case '+': match('+'); S(); std::cout << "+"; break;
-            case '-': match('-'); S(); std::cout << "-"; break;
-            default: std::cerr << "Syntax error" << std::endl; exit(1);
+    if ((bool)_ics) {
+        switch(*_ics) {
+            case '(': _ics.match('('); S(); _ics.match(')'); S(); break;
+            case ')': break;
+            default: std::cerr << "Syntax error: didn't expect \"" << *_ics << "\" here" << std::endl; exit(1);
         }
     }
 }

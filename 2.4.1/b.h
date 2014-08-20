@@ -1,18 +1,18 @@
 #ifndef B_H
 #define B_H
+#include "icharstream.h"
 
-#include "Parser.h"
+struct b {
 
-struct b : Parser {
+    b(icharstream& ics) : _ics(ics) {};
 
-    using Parser::Parser;
-
-
-    void start() { S(); };
-    virtual void S();
+    void S();
+    void operator() () { S(); };
 
 private:
     b();
+    icharstream _ics;
+
 };
 
 #endif

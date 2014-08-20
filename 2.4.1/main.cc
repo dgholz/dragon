@@ -22,7 +22,12 @@ int main( int argc, char* *argv ) {
 
     p->start();
     if(p->lookahead != Parser::char_iter()) {
-        std::cerr << "Trailing input: " << *p->lookahead << std::endl;
+        std::cerr << "Trailing input: ";
+        while(p->lookahead != Parser::char_iter) {
+            std::cerr << *p->lookahead; p->lookahead++;
+        }
+        std::cerr << std::endl;
+
         return 1;
     }
 }

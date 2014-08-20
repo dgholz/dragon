@@ -16,7 +16,7 @@ int main( int argc, char* *argv ) {
         }
     }
     else {
-        std::cerr << "choose a question a,b, or c" << std::endl;
+        std::cerr << "choose a question a, b, or c" << std::endl;
         return 1;
     }
 

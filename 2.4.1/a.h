@@ -1,19 +1,17 @@
 #ifndef A_H
 #define A_H
+#include "icharstream.h"
 
-#include "Parser.h"
+struct a {
 
-struct a : Parser {
-
-    using Parser::Parser;
-
+    a(icharstream ics) : _ics(ics) {};
 
     void S();
-    virtual void start() { S(); };
+    void operator() () { S(); };
 
 private:
     a();
-
+    icharstream _ics;
 };
 
 #endif

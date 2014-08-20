@@ -2,13 +2,11 @@
 #include <iostream>
 
 void a::S() {
-    char_iter eos;
-    if(lookahead != eos) {
-        switch(*lookahead) {
-            case '+': match('+'); S(); S(); break;
-            case '-': match('-'); S(); S(); break;
-            case 'a': match('a'); break;
-            default: std::cerr << "Syntax error" << std::endl; exit(1);
-        }
+    _ics.check_exhausted();
+    switch(*_ics) {
+        case '+': _ics.match('+'); S(); S(); break;
+        case '-': _ics.match('-'); S(); S(); break;
+        case 'a': _ics.match('a'); break;
+        default: std::cerr << "Syntax error: didn't expect \"" << *_ics << "\" here" << std::endl; exit(1);
     }
 }

@@ -6,12 +6,12 @@ CXXFLAGS=-std=c++11
 LDFLAGS=-g
 LDLIBS=
 
-SRCS=Parser.cc main.cc
+SRCS=grammar.cc main.cc icharstream.cc
 OBJS=$(subst .cc,.o,$(SRCS))
 
-all: parser
+all: exercise_2_6_1
 
-parser: $(OBJS)
+exercise_2_6_1: $(OBJS)
 	    g++ $(LDFLAGS) -o $@ $(OBJS) $(LDLIBS) 
 
 depend: .depend

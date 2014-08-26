@@ -1,7 +1,8 @@
 CC=gcc
-CXX=g++
+CXX=g++-4.8
 RM=rm -f
-CPPFLAGS=-g
+CPPFLAGS=-g -Wall -pedantic
+CXXFLAGS=-std=c++11
 LDFLAGS=-g
 LDLIBS=
 
@@ -25,3 +26,7 @@ clean:
 dist-clean: clean
 	    $(RM) *~ .dependtool
 
+export PATH := $(PATH):.
+
+test: all
+	find t -perm /a+x -a -type f | sort | while read test; do eval $${test}; done

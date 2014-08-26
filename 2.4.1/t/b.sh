@@ -1,5 +1,10 @@
 #!/bin/sh
 
+test_grammar_b_empty() {
+    echo '# ε'
+    assertTrue "echo '' | exercise_2_4_1 b"
+}
+
 test_grammar_b() {
   exec 9<&0 <<EOT
 ()         0

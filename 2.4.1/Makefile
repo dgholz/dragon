@@ -20,4 +20,4 @@ clean:
 export PATH := $(PATH):.
 
 test: target
-	find t -perm /a+x -a -type f | while read test; do eval $${test}; done
+	find t -perm /a+x -a -type f | sort | while read test; do eval $${test}; done

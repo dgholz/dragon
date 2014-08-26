@@ -6,7 +6,7 @@ CXXFLAGS=-std=c++11
 LDFLAGS=-g
 LDLIBS=
 
-SRCS=a.cc b.cc c.cc main.cc
+SRCS=a.cc b.cc c.cc icharstream.cc main.cc
 OBJS=$(subst .cc,.o,$(SRCS))
 
 target: exercise_2_4_1

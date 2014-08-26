@@ -14,18 +14,7 @@ struct icharstream {
 
     icharstream(char_iter src) : lookahead(src) {};
 
-    void match(char const &c ) {
-        if(operator bool()) {
-            if( *lookahead == c ) {
-                lookahead++;
-            } else {
-                std::cerr << "Syntax error: expected \"" << c << "\", saw \"" << *lookahead << "\"" << std::endl;
-                exit(1);
-            }
-        } else {
-            err_out_of_input();
-        }
-    };
+    void match(char const &c);
 
     operator bool () const { return lookahead != _eos; };
 
@@ -39,11 +28,8 @@ struct icharstream {
 
 private:
     icharstream();
-    char_iter _eos;
-    bool err_out_of_input() const {
-        std::cerr << "Syntax error: ran out of input" << std::endl;
-        exit(1);
-    }
+    static char_iter const _eos;
+    bool err_out_of_input() const;
 
 };
 

@@ -11,7 +11,7 @@ void icharstream::match(char const &c ) {
     } else {
         err_out_of_input();
     }
-};
+}
 
 bool icharstream::err_out_of_input() const {
     std::cerr << "Syntax error: ran out of input" << std::endl;

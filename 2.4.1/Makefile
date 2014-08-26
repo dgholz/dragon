@@ -9,10 +9,15 @@ LDLIBS=
 SRCS=a.cc b.cc c.cc main.cc
 OBJS=$(subst .cc,.o,$(SRCS))
 
-all: exercise_2_4_1
+target: exercise_2_4_1
 
 exercise_2_4_1: $(OBJS)
-	    $(CXX) $(LDFLAGS) -o $@ $(OBJS) $(LDLIBS) 
+	$(CXX) $(LDFLAGS) -o $@ $(OBJS) $(LDLIBS) 
 
 clean:
 	$(RM) $(OBJS)
+
+export PATH := $(PATH):.
+
+test: target
+	find t -perm /a+x -a -type f | while read test; do eval $${test}; done

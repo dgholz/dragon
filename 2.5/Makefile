@@ -9,9 +9,9 @@ LDLIBS=
 SRCS=grammar.cc main.cc icharstream.cc
 OBJS=$(subst .cc,.o,$(SRCS))
 
-all: exercise_2_6_1
+all: section_2_5
 
-exercise_2_6_1: $(OBJS)
+section_2_5: $(OBJS)
 	    g++ $(LDFLAGS) -o $@ $(OBJS) $(LDLIBS) 
 
 depend: .depend

@@ -2,7 +2,7 @@
 
 test_grammar_empty() {
     echo '# ε'
-    assertFalse "echo '' | exercise_2_6_1"
+    assertFalse "echo '' | section_2_5"
 }
 
 test_grammar() {
@@ -17,7 +17,7 @@ EOT
   do
       echo "${input}" | egrep -v '^\s*(#|$)' >/dev/null || continue
       echo "# ${input}"
-      o=$(echo "${input}" | exercise_2_6_1)
+      o=$(echo "${input}" | section_2_5)
       assertEquals ${exit_value} $?
       echo ${o}
       assertEquals "${output}" "${o}"

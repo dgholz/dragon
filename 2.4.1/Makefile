@@ -12,7 +12,7 @@ OBJS=$(subst .cc,.o,$(SRCS))
 target: exercise_2_4_1
 
 exercise_2_4_1: $(OBJS)
-	$(CXX) $(LDFLAGS) -o $@ $(OBJS) $(LDLIBS) 
+	$(CXX) $(LDFLAGS) -o $@ $(OBJS) $(LDLIBS)
 
 clean:
 	$(RM) $(OBJS)

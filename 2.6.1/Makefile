@@ -12,7 +12,7 @@ OBJS=$(subst .cc,.o,$(SRCS))
 all: exercise_2_6_1
 
 exercise_2_6_1: $(OBJS)
-	    g++ $(LDFLAGS) -o $@ $(OBJS) $(LDLIBS) 
+	    g++ $(LDFLAGS) -o $@ $(OBJS) $(LDLIBS)
 
 depend: .depend
 

@@ -8,6 +8,7 @@ test_grammar_empty() {
 test_grammar() {
   exec 9<&0 <<EOT
 2-1     0 21-
+2\ -\ 1 0 21-
 3+5-2   1 35+
 1       1 1
 1-      1 1

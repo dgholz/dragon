@@ -1,3 +1,5 @@
 *.o
 *.sw?
 .depend
+exercise_*
+section_*

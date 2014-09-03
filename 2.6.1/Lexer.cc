@@ -31,5 +31,12 @@ Token const& Lexer::scan() {
         ss >> value;
         return Num(value);
     }
-
+    if(std::isalpha(*peek)) {
+        while(std::isalnum(*peek)) {
+            ss << *peek++;
+            ++col;
+        }
+        auto f = words.emplace(ss.str(), Word(Token::Tag::ID, ss.str()));
+        return f.first->second;
+    }
 }

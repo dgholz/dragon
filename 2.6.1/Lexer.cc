@@ -39,4 +39,5 @@ Token const& Lexer::scan() {
         auto f = words.emplace(ss.str(), Word(Token::Tag::ID, ss.str()));
         return f.first->second;
     }
+    return Punct(*peek++);
 }

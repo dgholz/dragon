@@ -1,20 +1,13 @@
-#include "icharstream.h"
-#include "grammar.h"
+#include "Lexer.h"
+#include "Token.h"
 #include <iostream>
 
 int main( int argc, char* *argv ) {
-    icharstream ics(std::cin);
-
-    grammar g(ics);
-    g();
-
-    if(ics) {
-        std::cerr << "Trailing input: ";
-        while(ics) {
-            std::cerr << *ics; ++ics;
-        }
-        std::cerr << std::endl;
-
-        return 1;
+    lexer::Lexer l(std::cin);
+    while(!l.no_more_input()) {
+        lexer::Token const* t = &l.scan();
+        t->ostr(std::cout);
+        std::cout << ", ";
     }
+    std::cout << std::endl;
 }

@@ -17,6 +17,9 @@ void Lexer::skip_space() {
 
 Token const& Lexer::scan() {
     skip_space();
+    if(no_more_input()) {
+        return EndOfInput();
+    }
     if(std::isdigit(*peek)) {
     }
 

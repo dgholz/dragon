@@ -6,7 +6,7 @@
 
 namespace lexer {
     struct Token {
-        enum Tag { NUM, ID, TRUE, FALSE };
+        enum Tag { NUM, ID, TRUE, FALSE, ENDOFINPUT };
         Token(Tag const& t) : tag(t) {};
         Tag tag;
     };
@@ -20,6 +20,11 @@ namespace lexer {
         std::string const lexeme;
         Word(Tag const& t, std::string const& s) : Token(t), lexeme(s) { };
     };
+
+    struct EndOfInput : Token {
+        EndOfInput() : Token(Tag::ENDOFINPUT) {};
+    };
+
 }
 
 #endif

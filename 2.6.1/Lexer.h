@@ -11,6 +11,7 @@ namespace lexer {
 
         void skip_space();
         Token const& scan();
+        bool no_more_input() const { return peek == std::istreambuf_iterator<char>(); };
 
         std::istream &bis;
         std::istreambuf_iterator<char> peek;

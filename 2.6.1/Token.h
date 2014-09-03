@@ -18,7 +18,7 @@ namespace lexer {
 
     struct Word : Token {
         std::string const lexeme;
-        Word(Tag tag, std::string s) : Token(tag), lexeme(s) { };
+        Word(Tag const& t, std::string const& s) : Token(t), lexeme(s) { };
     };
 }
 

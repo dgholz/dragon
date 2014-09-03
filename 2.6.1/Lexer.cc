@@ -1,5 +1,6 @@
 #include "Lexer.h"
 #include <cctype>
+#include <sstream>
 
 using namespace lexer;
 
@@ -20,7 +21,15 @@ Token const& Lexer::scan() {
     if(no_more_input()) {
         return EndOfInput();
     }
+    std::stringstream ss;
     if(std::isdigit(*peek)) {
+        while(std::isdigit(*peek)) {
+            ss << *peek++;
+            ++col;
+        }
+        uintmax_t value;
+        ss >> value;
+        return Num(value);
     }
 
 }

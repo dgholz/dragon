@@ -4,7 +4,7 @@
 using namespace lexer;
 
 void Lexer::skip_space() {
-    for(; !std::isspace(*peek); ++peek) {
+    for(; std::isspace(*peek); ++peek) {
         if(isblank(*peek)) {
             ++col;
         }

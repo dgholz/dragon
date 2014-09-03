@@ -11,12 +11,12 @@ namespace lexer {
         Tag tag;
     };
 
-    struct Num : protected Token {
+    struct Num : Token {
         Num(int const& v) : Token(Tag::NUM), value(v) {};
         int const value;
     };
 
-    struct Word : protected Token {
+    struct Word : Token {
         std::string const lexeme;
         Word(Tag tag, std::string s) : Token(tag), lexeme(s) { };
     };

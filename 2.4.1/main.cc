@@ -17,7 +17,7 @@ int main( int argc, char* *argv ) {
             case 'a': parse<a>( ics ); break;
             case 'b': parse<b>( ics ); break;
             case 'c': parse<c>( ics ); break;
-            default: std::cerr << "choose a question a,b, or c" << std::endl; return 1;
+            default: std::cerr << "choose a question a, b, or c" << std::endl; return 1;
         }
     }
     else {

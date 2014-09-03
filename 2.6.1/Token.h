@@ -7,7 +7,7 @@
 namespace lexer {
     struct Token {
         enum Tag { NUM, ID, TRUE, FALSE };
-        Token(Tag t) : tag(t) {};
+        Token(Tag const& t) : tag(t) {};
         Tag tag;
     };
 

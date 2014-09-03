@@ -6,7 +6,7 @@ CXXFLAGS=-std=c++11
 LDFLAGS=-g
 LDLIBS=
 
-SRCS=grammar.cc main.cc Lexer.cc
+SRCS=main.cc Lexer.cc
 OBJS=$(subst .cc,.o,$(SRCS))
 
 all: exercise_2_6_1

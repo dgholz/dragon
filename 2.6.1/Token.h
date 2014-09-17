@@ -1,14 +1,20 @@
 #ifndef TOKEN_H
 #define TOKEN_H
 
-#include <string>
 #include <ostream>
 
-namespace lexer {
-    struct Token {
-        bool match(std::istreambuf_iterator);
-        std::vector<std::tuple>& add_payload(std::vector &v)
-    }
+#include "Tag.h"
+
+struct Token {
+    typedef int payload_t;
+    Tag const tag;
+    payload_t const payload;
+    Token( Tag const t, payload_t const p) : tag(t), payload(p) {};
+};
+
+std::ostream& operator<<(std::ostream &os, Token const &t) {
+    os << "[" << t.tag << ", " << t.payload << "]";
+    return os;
 }
 
 #endif

@@ -4,7 +4,7 @@ RM=rm -f
 CPPFLAGS=-ggdb3 -Wall -pedantic -O0
 CXXFLAGS=-std=c++11
 LDFLAGS=-g
-LDLIBS=
+LDLIBS=-lboost_regex
 
 SRCS=main.cc
 OBJS=$(subst .cc,.o,$(SRCS))

@@ -10,7 +10,8 @@ struct Lookahead {
 
     bool no_more_input() const { return peek == std::istreambuf_iterator<char>(); };
 
-    std::istreambuf_iterator<char> peek;
-}
+    typedef std::istreambuf_iterator<char> itr;
+    itr peek;
+};
 
 #endif

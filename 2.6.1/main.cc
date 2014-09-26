@@ -10,10 +10,12 @@
 
 std::vector<Lexeme> lexemes({
         Lexeme(
-            ".",
-            [](boost::cmatch const &m) {
-                return Token(Tag::HI, 1);
-            }
+            "[a-z]+",
+            Tag::HI
+        ),
+        Lexeme(
+            "[\n \t]",
+            Tag::HELLO
         ),
     });
 

@@ -5,15 +5,17 @@
 
 #include <boost/regex.hpp>
 
+#include "Tag.h"
 #include "Token.h"
 
 struct Lexeme {
     boost::regex const pattern;
-    typedef std::function<Token(boost::cmatch)> emitter;
-    emitter const emit;
-    Lexeme(boost::regex const &re, emitter const &e) : pattern(re), emit(e) {};
-    Lexeme(std::string const &res, emitter const &e) : pattern(boost::regex(res)), emit(e) {};
-    Token operator()(boost::cmatch const &m) { return emit(m); }
+    Tag const tag;
+    boost::cmatch cmatch;
+
+    Lexeme(boost::regex const &re, Tag const &t) : pattern(re), tag(t) {};
+    Lexeme(std::string const &res, Tag const &t) : pattern(boost::regex(res)), tag(t) {};
+    Token operator()() { return Token(tag, cmatch[0]); };
 };
 
 #endif

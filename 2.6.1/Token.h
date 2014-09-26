@@ -12,6 +12,7 @@ struct Token {
     typedef std::vector<payload_t> vpayload_t;
     Tag const tag;
     vpayload_t const payload;
+
     Token(Tag const t, payload_t const p) : tag(t), payload({p}) {};
     Token(Tag const t) : tag(t) {};
 };

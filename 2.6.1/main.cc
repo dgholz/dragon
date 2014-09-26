@@ -1,5 +1,6 @@
 #include <ostream>
 #include <vector>
+#include <sstream>
 
 #include <boost/regex.hpp>
 
@@ -22,9 +23,19 @@ std::vector<Lexeme> lexemes({
 int main( int argc, char* *argv ) {
     auto l = lexemes;
     auto p = Lookahead(std::cin);
-    auto m = l[0];
-    boost::cmatch g;
-    boost::regex_match(*p.peek, g, m.pattern);
-    Token t = m(g);
-    std::cout << t << std::endl;
+
+    while(!p.no_more_input()) {
+        std::stringstream buf;
+        decltype(l) m({});
+        buf << *p;
+        for( auto lex : l ) {
+            if(boost::regex_match(buf.str().c_str(), lex.cmatch, lex.pattern)) {
+                m.push_back(lex);
+            }
+        }
+        if(1==m.size()) {
+            std::cout << m[0]() << std::endl;
+        }
+        p++;
+    }
 }

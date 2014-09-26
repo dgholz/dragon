@@ -12,6 +12,9 @@ struct Lookahead {
 
     typedef std::istreambuf_iterator<char> itr;
     itr peek;
+    char operator *() { return *peek; };
+    itr operator ++() { return peek++; };
+    itr operator ++(int) { return ++peek; };
 };
 
 #endif

@@ -9,16 +9,16 @@
 #include "Lexeme.h"
 #include "Lookahead.h"
 
-std::vector<Lexeme> lexemes({
-        Lexeme(
-            "[a-z]+",
-            Tag::HI
-        ),
-        Lexeme(
-            "[\n \t]",
-            Tag::HELLO
-        ),
-    });
+std::vector<const Lexeme> lexemes({
+    Lexeme(
+        "[a-z]+",
+        Tag::HI
+    ),
+    Lexeme(
+        "[\n \t]",
+        Tag::HELLO
+    ),
+});
 
 int main( int argc, char* *argv ) {
     auto l = lexemes;

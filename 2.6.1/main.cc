@@ -1,5 +1,5 @@
 #include <ostream>
-#include <vector>
+#include <array>
 #include <sstream>
 
 #include <boost/regex.hpp>
@@ -9,7 +9,7 @@
 #include "Lexeme.h"
 #include "Lookahead.h"
 
-std::vector<const Lexeme> lexemes({
+std::array<const Lexeme, 2> const static lexemes({
     Lexeme(
         "[a-z]+",
         Tag::HI

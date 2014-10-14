@@ -23,9 +23,9 @@ std::array<const Lexeme, 2> const static lexemes({
 int main( int argc, char* *argv ) {
     auto l = lexemes;
     auto p = Lookahead(std::cin);
+    std::stringstream buf;
 
     while(!p.no_more_input()) {
-        std::stringstream buf;
         decltype(l) m({});
         buf << *p;
         for( auto lex : l ) {

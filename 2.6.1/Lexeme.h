@@ -23,4 +23,14 @@ struct Lexeme {
 
 };
 
+namespace std {
+    template<> struct hash<const Lexeme> {
+        std::size_t operator()(const Lexeme& l) const {
+            auto p = std::hash<std::string>()(l.pattern.str());
+            auto t = std::hash<int>()(static_cast<int>(l.tag));
+            return p ^ t;
+        }
+    };
+}
+
 #endif

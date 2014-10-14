@@ -74,4 +74,6 @@ int main(int argc, char* *argv) {
         std::cout << "best match was " << m << std::endl;
         buf.str( buf.str().substr( longest->second.length() - 1 ) );
     }
+
+    return 0;
 }

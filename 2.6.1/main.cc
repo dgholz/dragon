@@ -4,6 +4,7 @@
 #include <unordered_map>
 
 #include <boost/regex.hpp>
+#include <boost/iterator/transform_iterator.hpp>
 
 #include "Tag.h"
 #include "Token.h"
@@ -38,6 +39,10 @@ template<typename T> mlex_match try_matching(T lex_itr, T const &lex_end, char c
     return m;
 }
 
+static const Lexeme l_get_first(const std::pair<const Lexeme, boost::cmatch> &p) {
+    return p.first;
+}
+
 static bool lm_cmp(const std::pair<const Lexeme, boost::cmatch> &a, const std::pair<const Lexeme, boost::cmatch> &b) {
     return a.second.length() > b.second.length();
 }
@@ -55,7 +60,9 @@ int main(int argc, char* *argv) {
             buf << *p; p++;
             what_m.insert(prev_wm.begin(), prev_wm.end());
             prev_wm = what_m;
-            what_m = try_matching(what_m.begin(), what_m.end(), buf.str().c_str());
+            auto lex_itr = boost::make_transform_iterator(what_m.begin(), l_get_first);
+            auto lex_end = boost::make_transform_iterator(what_m.end(), l_get_first);
+            what_m = try_matching(lex_itr, lex_end, buf.str().c_str());
         }
 
         auto longest = std::max_element(prev_wm.begin(), prev_wm.end(), lm_cmp);

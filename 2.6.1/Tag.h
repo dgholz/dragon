@@ -4,8 +4,8 @@
 #include <ostream>
 
 #define XTAGS \
-    X(HI) \
-    X(HELLO)
+    X(NUM) \
+    X(PUNCT)
 
 enum class Tag {
 #define X(t) t,

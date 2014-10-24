@@ -11,14 +11,14 @@
 #include "Lexeme.h"
 #include "Lookahead.h"
 
-std::array<const Lexeme, 2> const static lexemes({
-    Lexeme(
-        "[a-z]+",
-        Tag::HI
+std::vector<Lexeme<char>> const static lexemes({
+    Lexeme<char>(
+        "[\\d]+",
+        Tag::NUM
     ),
-    Lexeme(
-        "[\n \t]",
-        Tag::HELLO
+    Lexeme<char>(
+        "[\\-+]",
+        Tag::PUNCT
     ),
 });
 

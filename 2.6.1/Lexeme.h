@@ -22,6 +22,7 @@ template<typename T> struct Lexeme {
     };
 
     Token<T> operator()(const boost::match_results<const T*> &match) const { return Token<T>(tag, match[0]); };
+    Token<T> operator()(const std::basic_string<T> &match) const { return Token<T>(tag, match); };
 
 };
 

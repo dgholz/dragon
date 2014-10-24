@@ -18,11 +18,11 @@ struct Token {
 };
 
 std::ostream& operator<<(std::ostream &os, Token const &t) {
-    os << "[" << t.tag;
+    os << "[ " << t.tag;
     for(auto p : t.payload) {
         os << ", " << p;
     }
-    os << "]";
+    os << " ]";
     return os;
 }
 

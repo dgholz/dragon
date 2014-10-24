@@ -7,8 +7,8 @@
 
 #include "Tag.h"
 
-struct Token {
-    typedef boost::variant<int, float, std::string> payload_t;
+template<typename T> struct Token {
+    typedef boost::variant<int, float, std::basic_string<T>> payload_t;
     typedef std::vector<payload_t> vpayload_t;
     Tag const tag;
     vpayload_t const payload;
@@ -17,7 +17,7 @@ struct Token {
     Token(Tag const t) : tag(t) {};
 };
 
-std::ostream& operator<<(std::ostream &os, Token const &t) {
+template<typename T> std::ostream& operator<<(std::ostream &os, Token<T> const &t) {
     os << "[ " << t.tag;
     for(auto p : t.payload) {
         os << ", " << p;

@@ -11,6 +11,7 @@ enum class Tag {
 #define X(t) t,
     XTAGS
 #undef X
+    END_OF_INPUT,
 };
 
 std::ostream& operator<<(std::ostream &os, Tag const &t) {
@@ -18,6 +19,7 @@ std::ostream& operator<<(std::ostream &os, Tag const &t) {
 #define X(t) case Tag::t: os << #t; break;
         XTAGS
 #undef X
+        case Tag::END_OF_INPUT: os << "END_OF_INPUT"; break;
     };
     return os;
 }

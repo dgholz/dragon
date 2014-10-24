@@ -3,18 +3,20 @@
 
 #include <iterator>
 
-struct Lookahead {
-    Lookahead(std::istream &instr) :
-        peek(instr)
-    {}
+template<typename T> struct Lookahead {
+    typedef std::istreambuf_iterator<T> itr;
 
-    bool no_more_input() const { return peek == std::istreambuf_iterator<char>(); };
-
-    typedef std::istreambuf_iterator<char> itr;
     itr peek;
-    char operator *() { return *peek; };
+
+    Lookahead(): peek() {};
+    Lookahead(itr &_peek): peek(_peek) {};
+    Lookahead(std::basic_istream<T> &instr): peek(instr) {};
+
+    T operator *() { return *peek; };
     itr operator ++() { return peek++; };
     itr operator ++(int) { return ++peek; };
+
+    bool no_more_input() const { return peek == std::istreambuf_iterator<T>(); };
 };
 
 #endif

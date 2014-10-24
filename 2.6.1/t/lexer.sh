@@ -7,13 +7,15 @@ test_input_empty() {
 
 test_lexer() {
   exec 9<&0 <<EOT
-2-1     0 [ NUM, 2 ], [ PUNCT, - ], [ NUM, 1 ], [ ENDOFINPUT ], 
+2-1       0 [ NUM, 2 ], [ PUNCT, - ], [ NUM, 1 ], [ END_OF_INPUT ], 
+a         1 [ END_OF_INPUT, a ], 
+abc       1 [ END_OF_INPUT, a ], 
 EOT
   while read input exit_value output
   do
       echo "${input}" | egrep -v '^\s*(#|$)' >/dev/null || continue
       echo "# ${input}"
-      o=$(echo "${input}" | exercise_2_6_1)
+      o=$(/bin/echo -n "${input}" | exercise_2_6_1)
       assertEquals ${exit_value} $?
       echo ${o}
       assertEquals "${output}" "${o}"

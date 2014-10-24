@@ -10,11 +10,12 @@
 
 template<typename T> struct Lexeme {
 
-    Tag const tag;
-    boost::basic_regex<T> const pattern;
+    boost::basic_regex<T> pattern;
+    Tag tag;
 
     Lexeme(const boost::basic_regex<T> &re, const Tag &t) : pattern(re), tag(t) {};
     Lexeme(const std::basic_string<T> &res, const Tag &t) : pattern(boost::basic_regex<T>(res)), tag(t) {};
+    Lexeme(const Lexeme<T> &l) : pattern(l.pattern), tag(l.tag) {};
 
     bool operator==(const Lexeme<T> &l) const {
         return pattern == l.pattern && tag == l.tag;

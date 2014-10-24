@@ -8,25 +8,26 @@
 #include "Tag.h"
 #include "Token.h"
 
-struct Lexeme {
+template<typename T> struct Lexeme {
 
-    boost::regex const pattern;
     Tag const tag;
+    boost::basic_regex<T> const pattern;
 
-    Lexeme(const boost::regex &re, const Tag &t) : pattern(re), tag(t) {};
-    Lexeme(const std::string &res, const Tag &t) : pattern(boost::regex(res)), tag(t) {};
+    Lexeme(const boost::basic_regex<T> &re, const Tag &t) : pattern(re), tag(t) {};
+    Lexeme(const std::basic_string<T> &res, const Tag &t) : pattern(boost::basic_regex<T>(res)), tag(t) {};
 
-    Token operator()(const boost::cmatch &cmatch) const { return Token(tag, cmatch[0]); };
-    bool operator==(const Lexeme &l) const {
+    bool operator==(const Lexeme<T> &l) const {
         return pattern == l.pattern && tag == l.tag;
     };
+
+    Token<T> operator()(const boost::match_results<const T*> &match) const { return Token<T>(tag, match[0]); };
 
 };
 
 namespace std {
-    template<> struct hash<const Lexeme> {
-        std::size_t operator()(const Lexeme& l) const {
-            auto p = std::hash<std::string>()(l.pattern.str());
+    template<typename T> struct hash<const Lexeme<T>> {
+        std::size_t operator()(const Lexeme<T>& l) const {
+            auto p = std::hash<std::basic_string<T>>()(l.pattern.str());
             auto t = std::hash<int>()(static_cast<int>(l.tag));
             return p ^ t;
         }

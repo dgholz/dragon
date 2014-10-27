@@ -33,6 +33,9 @@ template<typename T> struct quote_unprintables {
             if ( up_itr != unprint_map.end() ) {
                 buf << up_itr->second;
             }
+            else {
+                buf << i;
+            }
         }
         return buf.str();
     }

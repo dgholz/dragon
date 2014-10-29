@@ -6,7 +6,7 @@ CXXFLAGS=-std=c++11
 LDFLAGS=-g
 LDLIBS=-lboost_regex
 
-SRCS=main.cc
+SRCS=main.cc Tokenizer.cc
 OBJS=$(subst .cc,.o,$(SRCS))
 
 all: exercise_2_6_1

@@ -14,6 +14,7 @@ enum class Tag {
     END_OF_INPUT,
 };
 
+namespace {
 std::ostream& operator<<(std::ostream &os, Tag const &t) {
     switch(t) {
 #define X(t) case Tag::t: os << #t; break;
@@ -22,6 +23,6 @@ std::ostream& operator<<(std::ostream &os, Tag const &t) {
         case Tag::END_OF_INPUT: os << "END_OF_INPUT"; break;
     };
     return os;
-}
+}}
 
 #endif

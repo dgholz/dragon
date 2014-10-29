@@ -2,6 +2,7 @@
 #define TOKEN_H
 
 #include <ostream>
+#include <unordered_map>
 
 #include "boost/variant.hpp"
 #include <boost/format.hpp>

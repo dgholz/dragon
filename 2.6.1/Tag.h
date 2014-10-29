@@ -15,14 +15,15 @@ enum class Tag {
 };
 
 namespace {
-std::ostream& operator<<(std::ostream &os, Tag const &t) {
-    switch(t) {
+    std::ostream& operator<<(std::ostream &os, Tag const &t) {
+        switch(t) {
 #define X(t) case Tag::t: os << #t; break;
-        XTAGS
+            XTAGS
 #undef X
-        case Tag::END_OF_INPUT: os << "END_OF_INPUT"; break;
-    };
-    return os;
-}}
+            case Tag::END_OF_INPUT: os << "END_OF_INPUT"; break;
+        };
+        return os;
+    }
+}
 
 #endif

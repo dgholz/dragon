@@ -41,7 +41,8 @@ bool Tokenizer<T>::try_matching() {
     return new_matches;
 }
 
-template<typename T> Token<T> Tokenizer<T>::next() {
+template<typename T>
+Token<T> Tokenizer<T>::next() {
     if(p.no_more_input()){
         if(buf.str().empty()) {
             return Token<T>(Tag::END_OF_INPUT);
@@ -53,7 +54,6 @@ template<typename T> Token<T> Tokenizer<T>::next() {
             cleanup_match(buf.str());
             p = Lookahead<T>();
             return t;
-            // throw NoToken(buf.str());
         }
     }
 
@@ -63,7 +63,6 @@ template<typename T> Token<T> Tokenizer<T>::next() {
         cleanup_match(buf.str());
         p = Lookahead<T>();
         return t;
-        // throw NoToken(buf.str());
     }
 
     // find longest lexeme which matches some of buf

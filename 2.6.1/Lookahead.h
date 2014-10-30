@@ -16,7 +16,7 @@ template<typename T> struct Lookahead {
     itr operator ++() { return peek++; };
     itr operator ++(int) { return ++peek; };
 
-    bool no_more_input() const { return peek == std::istreambuf_iterator<T>(); };
+    bool no_more_input() const { return peek == itr(); };
 };
 
 #endif

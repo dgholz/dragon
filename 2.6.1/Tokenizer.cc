@@ -43,8 +43,8 @@ bool Tokenizer<T>::try_matching() {
 
 template<typename T>
 Token<T> Tokenizer<T>::next() {
-    if(p.no_more_input()){
-        if(buf.str().empty()) {
+    if(buf.str().empty()) {
+        if(p.no_more_input()){
             return Token<T>(Tag::END_OF_INPUT);
         }
     }

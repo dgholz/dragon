@@ -48,12 +48,12 @@ Token<T> Tokenizer<T>::next() {
             return Token<T>(Tag::END_OF_INPUT);
         }
     }
-    while(!all_partial_match(best_matches, buf.str().length()) && add_one_char()) {
-        if(!try_matching()) {
-            auto t = Token<T>(Tag::END_OF_INPUT, buf.str());
-            cleanup_match(buf.str());
-            p = Lookahead<T>();
-            return t;
+
+    while(!all_partial_match(best_matches, buf.str().length())) {
+        auto more_input = add_one_char();
+        auto matched_something = try_matching();
+        if(!(more_input && matched_something)) {
+            break;
         }
     }
 

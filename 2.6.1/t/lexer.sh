@@ -1,8 +1,19 @@
 #!/bin/sh
 
 test_input_empty() {
-    echo '# ε'
-    assertTrue "echo '' | exercise_2_6_1"
+  exec 9<&0 <<EOT
+#\ ε     0 [ END_OF_INPUT ], 
+EOT
+  while read input exit_value output
+  do
+      echo "${input}"
+      input=""
+      o=$(/bin/echo -n "${input}" | exercise_2_6_1)
+      assertEquals ${exit_value} $?
+      /bin/echo ${o}
+      assertEquals "${output}" "${o}"
+  done
+  exec 0<&9
 }
 
 test_lexer() {
@@ -25,7 +36,7 @@ EOT
 
 test_lexer_with_newline() {
   exec 9<&0 <<EOT
-22-11       0 [ NUM, 22 ], [ PUNCT, - ], [ NUM, 11 ], [ END_OF_INPUT, \\\\n ], 
+22-11       1 [ NUM, 22 ], [ PUNCT, - ], [ NUM, 11 ], [ END_OF_INPUT, \\\\n ], 
 EOT
   while read input exit_value output
   do

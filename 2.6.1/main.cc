@@ -23,13 +23,17 @@ std::vector<Lexeme<char>> const static lexemes({
 int main(int argc, char* *argv) {
     auto p = Lookahead<char>(std::cin);
     Tokenizer<char> t(p, lexemes);
-    Tokenizer<char> tend;
 
-    while(t != tend) {
-        std::cout << t.next() << ", ";
-
+    auto exit_val = 0;
+    while(1) {
+        auto tok = t.next();
+        std::cout << tok << ", ";
+        if(tok.tag == Tag::END_OF_INPUT) {
+            exit_val = tok.payload.size() == 0 ? 0 : 1;
+            break;
+        }
     }
     std::cout << std::endl;
 
-    return 0;
+    return exit_val;
 }

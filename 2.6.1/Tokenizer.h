@@ -17,16 +17,7 @@ template<typename T> struct Tokenizer {
     std::basic_stringstream<T> buf;
     mlex_match best_matches;
 
-    Tokenizer() : p(), lexemes(), buf(), best_matches() {};
     Tokenizer(Lookahead<T> &_p, std::vector<Lexeme<T>> const &_lexemes): p(_p), lexemes(_lexemes), buf(), best_matches() {};
-
-    bool operator==(Tokenizer<T> const  &t) const {
-        return p.no_more_input() == t.p.no_more_input() && buf.str() == t.buf.str();
-    }
-
-    bool operator!=(Tokenizer<T> const &t) const {
-        return !(this->operator==(t));
-    }
 
     bool add_one_char();
     void cleanup_match(const std::basic_string<T> &matching_text);

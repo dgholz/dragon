@@ -42,7 +42,7 @@ bool Tokenizer<T>::try_matching() {
 }
 
 template<typename T>
-Token<T> Tokenizer<T>::next() {
+Token<T> const Tokenizer<T>::next() {
     if(buf.str().empty()) {
         if(p.no_more_input()){
             return Token<T>(Tag::END_OF_INPUT);

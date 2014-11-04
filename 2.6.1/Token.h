@@ -13,8 +13,8 @@
 template<typename T> struct Token {
     typedef boost::variant<int, float, std::basic_string<T>> payload_t;
     typedef std::vector<payload_t> vpayload_t;
-    Tag const tag;
-    vpayload_t const payload;
+    Tag tag;
+    vpayload_t payload;
 
     Token(Tag const t, payload_t const p) : tag(t), payload({p}) {};
     Token(Tag const t) : tag(t) {};

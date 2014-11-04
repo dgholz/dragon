@@ -7,6 +7,7 @@
 #include "Token.h"
 #include "Lexeme.h"
 #include "Lookahead.h"
+#include "TokenizerIterator.h"
 
 template<typename T> struct Tokenizer {
     typedef std::unordered_map<const Lexeme<T>, std::basic_string<T>> mlex_match;
@@ -29,6 +30,9 @@ template<typename T> struct Tokenizer {
     bool all_partial_match(mlex_match const &ml, std::string::size_type const &l);
     bool try_matching();
     Token<T> const next();
+
+    TokenizerIterator<T> begin() { return TokenizerIterator<T>(this); };
+    TokenizerIterator<T> end() const { return TokenizerIterator<T>(); };
 };
 
 #endif

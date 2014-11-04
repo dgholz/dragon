@@ -25,14 +25,9 @@ int main(int argc, char* *argv) {
     auto p = Lookahead<char>(std::cin);
     Tokenizer<char> t(p, lexemes);
 
-    auto exit_val = 0;
-    while(1) {
-        auto tok = t.next();
-        std::cout << tok << ", ";
-        if(tok.tag == Tag::END_OF_INPUT) {
-            exit_val = tok.payload.size() == 0 ? 0 : 1;
-            break;
-        }
+    for( auto tok : t ) {
+        std::cout << tok;
+        if(Tag::END_OF_INPUT != tok.tag) std::cout << ", ";
     }
     std::cout << std::endl;
 

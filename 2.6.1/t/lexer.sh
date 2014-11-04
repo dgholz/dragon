@@ -2,7 +2,7 @@
 
 test_input_empty() {
   exec 9<&0 <<EOT
-#\ ε     0 [ END_OF_INPUT ], 
+#\ ε     0 [ END_OF_INPUT ]
 EOT
   while read input exit_value output
   do
@@ -18,9 +18,9 @@ EOT
 
 test_lexer() {
   exec 9<&0 <<EOT
-2-1       0 [ NUM, 2 ], [ PUNCT, - ], [ NUM, 1 ], [ END_OF_INPUT ], 
-a         1 [ END_OF_INPUT, a ], 
-abc       1 [ END_OF_INPUT, a ], 
+2-1       0 [ NUM, 2 ], [ PUNCT, - ], [ NUM, 1 ], [ END_OF_INPUT ]
+a         1 [ END_OF_INPUT, a ]
+abc       1 [ END_OF_INPUT, a ]
 EOT
   while read input exit_value output
   do
@@ -36,7 +36,7 @@ EOT
 
 test_lexer_with_newline() {
   exec 9<&0 <<EOT
-22-11       1 [ NUM, 22 ], [ PUNCT, - ], [ NUM, 11 ], [ END_OF_INPUT, \\\\n ], 
+22-11       1 [ NUM, 22 ], [ PUNCT, - ], [ NUM, 11 ], [ END_OF_INPUT, \\\\n ]
 EOT
   while read input exit_value output
   do

@@ -4,9 +4,9 @@ RM=rm -f
 CPPFLAGS=-ggdb3 -Wall -pedantic -O0
 CXXFLAGS=-std=c++11
 LDFLAGS=-g
-LDLIBS=
+LDLIBS=-lboost_regex
 
-SRCS=main.cc Lexer.cc
+SRCS=main.cc Tokenizer.cc
 OBJS=$(subst .cc,.o,$(SRCS))
 
 all: exercise_2_6_1
@@ -29,4 +29,4 @@ dist-clean: clean
 export PATH := $(PATH):.
 
 test: all
-	find t -perm /a+x -a -type f | sort | while read test; do eval $${test}; done
+	@find t -perm /a+x -a -type f | sort | while read test; do eval $${test}; done

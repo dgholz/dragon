@@ -62,6 +62,7 @@ Token<T> const Tokenizer<T>::next() {
         auto t = Token<T>(Tag::END_OF_INPUT, buf.str());
         cleanup_match(buf.str());
         p = Lookahead<T>();
+        error_seen = true;
         return t;
     }
 

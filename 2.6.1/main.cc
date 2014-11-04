@@ -1,5 +1,6 @@
 #include <ostream>
 #include <vector>
+#include <cstdlib>
 
 #include <boost/regex.hpp>
 
@@ -35,5 +36,5 @@ int main(int argc, char* *argv) {
     }
     std::cout << std::endl;
 
-    return exit_val;
+    return t ? EXIT_SUCCESS : EXIT_FAILURE;
 }
